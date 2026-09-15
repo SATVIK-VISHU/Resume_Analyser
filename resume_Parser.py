@@ -117,7 +117,9 @@ def parse_job_description(job_description):
     response = client.chat.completions.create(
         model=model,
         messages=messages,
-        response_format=response_format
+        response_format=response_format,
+        reasoning_effort="low",
+        max_completion_tokens=4096,
     )
 
     raw_json = response.choices[0].message.content
